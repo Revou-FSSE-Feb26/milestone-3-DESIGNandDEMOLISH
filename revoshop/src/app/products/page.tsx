@@ -1,12 +1,13 @@
 'use client'
 
-import { AllProduct } from "@/types"
+import { Product } from "@/types"
 import axios from "axios";
 import { useEffect, useState } from "react"
 import Navigation from "@/components/NavigationBar";
+import ProductCard from "@/components/ProductCard";
 
 export default function ProductsPage() {
-    const [products, setProducts] = useState<AllProduct[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -16,7 +17,7 @@ export default function ProductsPage() {
             setLoading(true);
             setError(null);
 
-            const response = await axios.get<AllProduct[]>(`https://api.escuelajs.co/api/v1/products`);
+            const response = await axios.get<Product[]>(`https://api.escuelajs.co/api/v1/products`);
             setProducts(response.data);
 
         } catch (error: any) {
@@ -51,17 +52,10 @@ export default function ProductsPage() {
     return (
         <div>
             <Navigation />
-            <div className="flex justify-center">All Products</div>
+            <h1 className="flex justify-center">All Products</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {products.map((item: AllProduct) => (
-                    <div key={item.id}>{item.images && item.images[0] && (
-                        <div>
-                            <img src={item.images[0]} alt={item.title} />
-                        </div>
-                    )}
-                        <h3>{item.title}</h3>
-                        <p>${item.price}</p>
-                    </div>
+                {products.map((item: Product) => (
+                    <ProductCard key={item.id} product={item} />
                 ))}
 
             </div>
