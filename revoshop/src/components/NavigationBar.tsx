@@ -9,7 +9,7 @@ export default function Navigation() {
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     return (
-        <header className="w-full py-4 shadow-sm bg-white text-black relative z-30">
+        <header className="w-full py-4 shadow-sm bg-white text-black fixed z-30 flex flex-col">
             <div className="flex justify-between px-4 text-2xl">
                 <Link href="/" className="font-bold">RevoShop</Link>
 
@@ -21,14 +21,20 @@ export default function Navigation() {
                         Dashboard
                     </Link>
                 </nav>
-
-                {/* 2. Open the cart when clicked */}
-                <button
-                    onClick={() => setIsCartOpen(true)}
-                    className="hover:scale-110 transition-transform"
-                >
-                    <span>🛒</span>
-                </button>
+                <div className="flex gap-20 px-3">
+                    {/* 2. Open the cart when clicked */}
+                    <button
+                        onClick={() => setIsCartOpen(true)}
+                        className="hover:scale-110 transition-transform"
+                    >
+                        <span>🛒</span>
+                    </button>
+                    <div>
+                        <Link href={"/login"} className="hover:text-indigo-600 transition">
+                            Login
+                        </Link>
+                    </div>
+                </div>
             </div>
 
             {/* 3. The sliding drawer itself */}

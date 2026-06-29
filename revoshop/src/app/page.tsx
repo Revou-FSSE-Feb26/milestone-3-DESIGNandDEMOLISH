@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-20 m-2 bg-white">
       <Navigation />
-      <main className="flex flex-col gap-10 text-2xl font-bold text-center mb-6">
+      <main className="flex flex-col mt-40 gap-10 text-2xl font-bold text-center mb-6">
         <h1>Products</h1>
         {!loading && !error && cardProduct.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">

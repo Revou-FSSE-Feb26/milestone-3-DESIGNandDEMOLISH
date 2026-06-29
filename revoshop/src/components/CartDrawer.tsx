@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from "next/navigation";
 import { useCart } from "@/contexts/CartContext";
 
 interface CartDrawerProps {
@@ -8,7 +9,7 @@ interface CartDrawerProps {
 }
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
-    // Reading items, total, and dispatch directly from your Context memory
+    const router = useRouter();
     const { items, total, dispatch } = useCart();
 
     return (
@@ -152,7 +153,8 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                             id="checkout-btn"
                             className="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-500 transition-colors shadow-lg cursor-pointer"
                             onClick={() => {
-                                alert("🎉 Thanks for shopping at RevoShop! (Checkout not implemented — this is a demo!)");
+                                onClose();
+                                router.push("/checkout");
                             }}
                         >
                             Checkout

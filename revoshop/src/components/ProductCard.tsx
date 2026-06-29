@@ -28,7 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     return (
         <>
-            <div className="shop-card">
+            <div className="shop-card pb-40">
                 <div className="relative h-48 w-full bg-slate-100 dark:bg-zinc-800 overflow-hidden">
                     {product.images ? (
                         <img
@@ -52,7 +52,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                                 ${Number(product.price).toFixed(2)}
                             </span>
                         </div>
-                        <h3 className="text-base font-bold text-slate-800 dark:text-zinc-100 line-clamp-1 mb-1">
+                        <h3 className="text-base font-bold text-slate-800 dark:text-black line-clamp-1 mb-1">
                             {product.title}
                         </h3>
                         {/* <p className="text-xs text-slate-500 dark:text-zinc-400 line-clamp-2 leading-relaxed mb-4">
@@ -61,7 +61,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     </div>
                     <div className="flex flex-col gap-2 mt-4">
                         <Link
-                            href={`/flowers/${product.id}`}
+                            href={`/products/${product.id}`}
                             className="btn-primary py-2 text-xs text-center border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-50 transition"
                         >
                             View Details
